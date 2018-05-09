@@ -95,7 +95,7 @@ abstract class Cache extends Component implements CacheInterface
         if (is_string($key)) {
             $key = ctype_alnum($key) && StringHelper::byteLength($key) <= 32 ? $key : md5($key);
         } else {
-            $key = md5(json_encode($key));
+            $key = md5(serialize($key));
         }
 
         return $this->keyPrefix . $key;
